@@ -29,8 +29,8 @@ public class JpaMain {
 
             team.getMembers().add(member);
 
-//            em.flush();
-//            em.clear();
+            em.flush();
+            em.clear();
 
             Team findTeam = em.find(Team.class, team.getId());  //1차 캐시
             List<Member> members =  findTeam.getMembers();
@@ -38,9 +38,6 @@ public class JpaMain {
             for(Member m : members){
                 System.out.println("m = " + m.getUsername());
             }
-
-
-
 
             tx.commit();
         } catch (Exception e){
